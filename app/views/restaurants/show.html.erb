@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="my-3">Restaurant Detail</h1>
+
+  <div class="d-flex flex-column my-3 p-3 bg-warning">
+    <h3><%= @restaurant.name %></h3>
+    <p>🍽️ <strong><%= @restaurant.category.capitalize %></strong>
+      <% if @restaurant.category == 'chinese' %>
+        🇨🇳
+      <% elsif @restaurant.category == 'italian' %>
+        🇮🇹
+      <% elsif @restaurant.category == 'japanese' %>
+        🇯🇵
+      <% elsif @restaurant.category == 'french' %>
+        🇫🇷
+      <% else %>
+        🇧🇪
+      <% end %>
+    </p>
+    <p>📍 <%= @restaurant.address %></p>
+    <p>☎️ <%= @restaurant.phone_number %></p>
+  </div>
+
+  <p><strong>Reviews</strong></p>
+  <div class="d-flex flex-column my-3 p-3 bg-light">
+    <% @restaurant.reviews.each do |review| %>
+        <p>Rating: <strong><%= review.rating %></strong></p>
+        <p>Review: <strong><%= review.content %></strong></p>
+    <% end %>
+  </div>
+
+  <%= link_to 'Go back home', restaurants_path %>
+</div>

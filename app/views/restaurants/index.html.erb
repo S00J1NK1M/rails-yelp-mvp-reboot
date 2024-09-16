@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="my-3">See all restaurants</h1>
+
+  <% @restaurants.each do |restaurant| %>
+    <div class="d-flex flex-column my-3 p-3 bg-light">
+      <h3><%= restaurant.name %></h3>
+      <p>🍽️ <strong><%= restaurant.category.capitalize %></strong>
+        <% if restaurant.category == 'chinese' %>
+          🇨🇳
+        <% elsif restaurant.category == 'italian' %>
+          🇮🇹
+        <% elsif restaurant.category == 'japanese' %>
+          🇯🇵
+        <% elsif restaurant.category == 'french' %>
+          🇫🇷
+        <% else %>
+          🇧🇪
+        <% end %>
+      </p>
+      <p>📍 <%= restaurant.address %></p>
+      <p>☎️ <%= restaurant.phone_number %></p>
+      <%= link_to "See details", restaurant_path(restaurant), class: "btn btn-success"%>
+    </div>
+  <% end %>
+</div>
